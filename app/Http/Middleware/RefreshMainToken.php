@@ -15,6 +15,12 @@ class RefreshMainToken
      */
     public function handle($request, Closure $next)
     {
+        if (!$request->user() || !$request->user()->token) {
+            return $next($request);
+        }
+
+        //
+
         return $next($request);
     }
 }
