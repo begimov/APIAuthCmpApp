@@ -8,7 +8,7 @@ use GuzzleHttp\Client as Guzzle;
 class HomeController extends Controller
 {
     protected $guzzleClient;
-    
+
     /**
      * Create a new controller instance.
      *
@@ -28,6 +28,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $messages = collect();
+    
+        if (auth()->user()->token) {
+            $res = $this->guzzleClient->get('http://apiauthcmp.test/api/messages', [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Bearer ' . auth()->user()->token->access_token
+                ]
+            ]);
+            $messages = collect(json_decode($res->getBody()));
+        }
+
+        return view('home')->with([
+            'messages' => $messages,
+        ]);
     }
 }

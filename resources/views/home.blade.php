@@ -8,7 +8,13 @@
                 <div class="panel-heading">Messages</div>
 
                 <div class="panel-body">
-                    //
+                    @if (Auth::user()->token)
+                        @foreach ($messages as $msg)
+                        <p>{{ $msg->body }}</p>
+                        @endforeach
+                    @else
+                        <p><a href="{{ url('/auth/main') }}">Authorize</a></p>
+                    @endif
                 </div>
             </div>
         </div>
