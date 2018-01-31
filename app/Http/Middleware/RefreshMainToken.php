@@ -19,7 +19,9 @@ class RefreshMainToken
             return $next($request);
         }
 
-        //
+        if ($request->user()->token->hasExpired()) {
+            return redirect();
+        }
 
         return $next($request);
     }
