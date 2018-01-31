@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route to auth in Main APIAuthCmp
 Route::group(['middleware' => ['auth']], function () {
     // redirect to Main app auth url
-    Route::get('/auth/main', 'API/MainAuthController@redirect');
+    Route::get('/auth/main', 'API\MainAuthController@redirect');
     // redirect from Main app after success with code needed to grab access_token
-    Route::get('/auth/main/callback', 'API/MainAuthController@callback');
+    Route::get('/auth/main/callback', 'API\MainAuthController@callback');
 });
