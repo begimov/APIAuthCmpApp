@@ -21,7 +21,7 @@ class MainAuthController extends Controller
             'client_id' => '3',
             'redirect_uri' => 'http://apiauthcmpapp.test/auth/main/callback',
             'response_type' => 'code',
-            'scope' => '*'
+            'scope' => 'view-messages'
         ]);
 
         return redirect('http://apiauthcmp.test/oauth/authorize?' . $query);
