@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Token;
 
 class User extends Authenticatable
 {
@@ -29,6 +30,6 @@ class User extends Authenticatable
 
     public function token()
     {
-        return $this->hasOne(App\Models\Token::class);
+        return $this->hasOne(Token::class);
     }
 }
