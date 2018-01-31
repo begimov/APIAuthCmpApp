@@ -27,4 +27,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/auth/main', 'API\MainAuthController@redirect');
     // redirect from Main app after success with code needed to grab access_token
     Route::get('/auth/main/callback', 'API\MainAuthController@callback');
+    // refresh access_token if expired
+    Route::get('/auth/main/refresh', 'API\MainAuthController@refresh');
 });

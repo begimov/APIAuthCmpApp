@@ -20,7 +20,7 @@ class RefreshMainToken
         }
 
         if ($request->user()->token->hasExpired()) {
-            return redirect();
+            return redirect('/auth/main/refresh');
         }
 
         return $next($request);
