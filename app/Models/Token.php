@@ -7,7 +7,7 @@ use App\User;
 
 class Token extends Model
 {
-    protected $fillable = ['access_token'];
+    protected $fillable = ['access_token', 'refresh_token', 'expires_in'];
     
     public function user()
     {
