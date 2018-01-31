@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['refresh.main']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
 
 // Route to auth in Main APIAuthCmp
 Route::group(['middleware' => ['auth']], function () {
