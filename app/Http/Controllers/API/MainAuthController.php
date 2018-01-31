@@ -44,7 +44,9 @@ class MainAuthController extends Controller
         $request->user()->token()->delete();
 
         $request->user()->token()->create([
-            'access_token' => $res['access_token']
+            'access_token' => $res['access_token'],
+            'refresh_token' => $res['refresh_token'],
+            'expires_in' => $res['expires_in'],
         ]);
 
         return redirect('/home');
