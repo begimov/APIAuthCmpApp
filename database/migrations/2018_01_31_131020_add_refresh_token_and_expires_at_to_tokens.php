@@ -14,7 +14,8 @@ class AddRefreshTokenAndExpiresAtToTokens extends Migration
     public function up()
     {
         Schema::table('tokens', function (Blueprint $table) {
-            //
+            $table->text('refresh_token');
+            $table->bigInteger('expires_in');
         });
     }
 
@@ -26,7 +27,7 @@ class AddRefreshTokenAndExpiresAtToTokens extends Migration
     public function down()
     {
         Schema::table('tokens', function (Blueprint $table) {
-            //
+            $table->dropColumn(['refresh_token', 'expires_in']);
         });
     }
 }
